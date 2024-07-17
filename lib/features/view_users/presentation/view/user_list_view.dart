@@ -4,7 +4,6 @@ import 'package:sample/core/presentation/view/navigation.dart';
 
 import '../../../../core/presentation/view/routes.dart';
 import '../../data/models/user_list_model.dart';
-import '../bloc/view_single_user/view_single_user_bloc.dart';
 import '../bloc/view_users_list/view_users_bloc.dart';
 import '../widgets/list_item.dart';
 
@@ -18,7 +17,6 @@ class UserListView extends StatefulWidget {
 class _UserListViewState extends State<UserListView> {
   final ScrollController _scrollController = ScrollController();
   late ViewUsersBloc _viewUsersBloc;
-  late ViewSingleUserBloc _singleUserBloc;
 
   int _initialPageNo = 1;
   List<Data> _data = [];
@@ -27,7 +25,6 @@ class _UserListViewState extends State<UserListView> {
     super.initState();
     _viewUsersBloc = BlocProvider.of<ViewUsersBloc>(context)
       ..add(GetViewUsers(_initialPageNo.toString()));
-    _singleUserBloc = BlocProvider.of<ViewSingleUserBloc>(context);
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -84,7 +81,6 @@ class _UserListViewState extends State<UserListView> {
   }
 
   void onTap(int userId) {
-    // _singleUserBloc.add(GetViewSingleUserEvent(userId.toString()));
     Navigation()
         .pushNavigate(context, ScreenRoutes.userPage, {'userId': userId});
   }

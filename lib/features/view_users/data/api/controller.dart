@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:sample/core/data/api/constants.dart' as core;
 
 import 'constants.dart';
-import 'package:sample/core/data/api/constants.dart' as core;
 
 class ApiController {
   Future<Map<String, dynamic>?> getUsers(String pageNo) async {

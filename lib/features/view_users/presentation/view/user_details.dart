@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/view_single_user/view_single_user_bloc.dart';
-import '../bloc/view_users_list/view_users_bloc.dart';
 
 class UserDetails extends StatefulWidget {
   final dynamic userDetails;
@@ -30,6 +29,7 @@ class _UserDetailsState extends State<UserDetails> {
       appBar: AppBar(),
       body: Center(
         child: BlocBuilder<ViewSingleUserBloc, ViewSingleUserState>(
+          bloc: _singleUserBloc,
           builder: (context, state) {
             if (state is GetViewSingleUserState) {
               _userDetails = state.userModel.data;
